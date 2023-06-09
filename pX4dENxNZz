@@ -3,25 +3,21 @@ if game.PlaceId == 7288936208 then -- checks the game id
 print("Success")
 else
 print("Game Not Supported") -- change the text to whatever
-end
 
 if game.PlaceId == 13059253052 then -- checks the game id
     loadstring(game:HttpGet("https://raw.githubusercontent.com/Raspelx/astrax/main/eca%20training"))()
 print("Success")
 else
 print("Game Not Supported") -- change the text to whatever
-end
 
 if game.PlaceId == 7922878642 then -- checks the game id
     loadstring(game:HttpGet("https://raw.githubusercontent.com/Raspelx/astrax/main/sbs%20training"))()
 print("Success")
 else
 print("Game Not Supported") -- change the text to whatever
-end
 
 if game.PlaceId == 5117512593 then -- checks the game id
     loadstring(game:HttpGet("https://raw.githubusercontent.com/Raspelx/astrax/main/soccer%20legaue"))()
 print("Success")
 else
 print("Game Not Supported") -- change the text to whatever
-end
