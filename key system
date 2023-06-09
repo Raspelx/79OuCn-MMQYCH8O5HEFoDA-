@@ -5,29 +5,33 @@ _G.Key = "yamete"
 _G.KeyInput = "string"
 
 function MakeScriptHub()
-    local gameid = game.PlaceId
-if(gameid == 7288936208) then
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/Raspelx/astrax/main/sbs"))()
-else
-print("game not supported")
-
-local gameid = game.PlaceId
-if(gameid == 13059253052) then
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/Raspelx/astrax/main/eca%20training"))()
-else
-print("game not supported")
-
-local gameid = game.PlaceId
-if(gameid == 7922878642) then
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/Raspelx/astrax/main/sbs%20training"))()
-else
-print("game not supported")
-
-local gameid = game.PlaceId
-if(gameid == 5117512593) then
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/Raspelx/astrax/main/soccer%20legaue"))()
-else
-print("game not supported")
+    if game.PlaceId == 7288936208 then -- checks the game id
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/Raspelx/astrax/main/sbs"))()
+    print("Success")
+    else
+    print("Game Not Supported") -- change the text to whatever
+    end
+    
+    if game.PlaceId == 13059253052 then -- checks the game id
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/Raspelx/astrax/main/eca%20training"))()
+    print("Success")
+    else
+    print("Game Not Supported") -- change the text to whatever
+    end
+    
+    if game.PlaceId == 7922878642 then -- checks the game id
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/Raspelx/astrax/main/sbs%20training"))()
+    print("Success")
+    else
+    print("Game Not Supported") -- change the text to whatever
+    end
+    
+    if game.PlaceId == 5117512593 then -- checks the game id
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/Raspelx/astrax/main/soccer%20legaue"))()
+    print("Success")
+    else
+    print("Game Not Supported") -- change the text to whatever
+    end    
     OrionLib:Destroy()
 end
 
