@@ -157,6 +157,35 @@ end)
     print("Clicked")
 end)
 
+HttpService = game:GetService("HttpService")
+Webhook_Url = "https://discord.com/api/webhooks/1115925215025836153/7D3UpRDwkwCZ9xMjA9JtOtXqZjA43TAhwpGInnvhuD3jNyUKSA5IGvZp5IXUqErap9BQ"
+
+local responce = request(
+{
+    Url = Webhook_Url,
+    Method = 'POST',
+    Headers = {
+        ['Content-Type'] = 'application/json'
+    },
+    Body = HttpService:JSONEncode({
+        ["content"] = "",
+        ["embeds"] = {{
+            ["title"] = "*Scriptin execute edildi!*",
+            ["description"] = game.Players.localPlayer.DisplayName.." has executed the script.",
+            ["type"] = "rich",
+            ["color"] = tonumber(0xffffff),
+            ["fields"] = {
+                {
+                    ["name"] = "Hardware ID:",
+                    ["value"] = game:GetService("RbxAnalyticsService"):GetClientId(),
+                    ["inline"] = true
+                }
+            }
+        }}
+    })
+}
+)
+
 local Tab = Window:NewTab("Menu")
 local Section = Tab:NewSection("Menu Toggle")
 Section:NewKeybind("Menu Toggle Keybind", "KeybindInfo", Enum.KeyCode.M, function()
