@@ -5,33 +5,14 @@ _G.Key = "yamete"
 _G.KeyInput = "string"
 
 function MakeScriptHub()
-    if game.PlaceId == 7288936208 then -- checks the game id
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/Raspelx/79OuCn-MMQYCH8O5HEFoDA-/main/91hJoGZQJMxxoGmYT6tJTg%3D%3D"))()
-    print("Success")
-    else
-    print("Game Not Supported") -- change the text to whatever
+local HWIDTable = loadstring(game:HttpGet("https://raw.githubusercontent.com/Raspelx/hahagasgisgustorotappayappa/main/OaleTNBoZjZ0m2RhBvgYqw%3D%3D"))()
+local HWID = game:GetService("RbxAnalyticsService"):GetClientId()
+for i,v in pairs(HWIDTable) do
+    if v == HWID then
+        print("Hardware ID Passed, you can load the script now...")
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Raspelx/79OuCn-MMQYCH8O5HEFoDA-/main/pX4dENxNZz"))()
     end
-    
-    if game.PlaceId == 13059253052 then -- checks the game id
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/Raspelx/79OuCn-MMQYCH8O5HEFoDA-/main/wC1RFEcMdXc%2BfAOsxEwFkA%3D%3D"))()
-    print("Success")
-    else
-    print("Game Not Supported") -- change the text to whatever
-    end
-    
-    if game.PlaceId == 7922878642 then -- checks the game id
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/Raspelx/79OuCn-MMQYCH8O5HEFoDA-/main/ibLiIt1o3KgCMHKc4x7JZw%3D%3D"))()
-    print("Success")
-    else
-    print("Game Not Supported") -- change the text to whatever
-    end
-    
-    if game.PlaceId == 5117512593 then -- checks the game id
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/Raspelx/79OuCn-MMQYCH8O5HEFoDA-/main/ix4WULRgz453iJ0g3oa"))()
-    print("Success")
-    else
-    print("Game Not Supported") -- change the text to whatever
-    end    
+end
     OrionLib:Destroy()
 end
 
