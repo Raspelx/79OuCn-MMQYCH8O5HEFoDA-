@@ -1,0 +1,164 @@
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("Astrax | SBS TRAİNİNG", "GrapeTheme")
+
+local Tab = Window:NewTab("Leg Reach")
+local Section = Tab:NewSection("Hitbox Expander")
+
+Section:NewSlider("Both Leg Reach", "SliderInfo", 50, 0, function(s) -- 500 (MaxValue) | 0 (MinValue)
+    game.Players.LocalPlayer.Character["Right Leg"].Size = Vector3.new(s, 2, s)
+    game.Players.LocalPlayer.Character["Left Leg"].Size = Vector3.new(s, 2, s)
+    game.Players.LocalPlayer.Character["Right Leg"].CanCollide = false
+    game.Players.LocalPlayer.Character["Left Leg"].CanCollide = false
+    game.Players.LocalPlayer.Character["Right Leg"].Massless = true
+    game.Players.LocalPlayer.Character["Left Leg"].Massless = true
+end)
+
+local Section = Tab:NewSection("Leg Transparency")
+
+Section:NewTextBox("Leg Transparency/Right", "TextboxInfo", function(txtr)game.Players.LocalPlayer.Character["Right Leg"].Transparency = txtr
+	print(txt)
+end)
+
+Section:NewTextBox("Leg Transparency/Left", "TextboxInfo", function(txtl)game.Players.LocalPlayer.Character["Left Leg"].Transparency = txtl
+	print(txt)
+end)
+
+local Section = Tab:NewSection("Fake Legs")
+Section:NewButton("Fake Right Leg", "ButtonInfo", function()local Players = game:GetService("Players")
+local Player = Players.LocalPlayer
+
+-- Bacak parçalarını bulma
+local solBacak = Player.Character["Left Leg"]
+local sagBacak = Player.Character["Right Leg"]
+
+-- Sahte bacak oluşturma
+local sahteBacak = Instance.new("Part")
+sahteBacak.Name = "Right Leg"
+sahteBacak.Size = Vector3.new(1, 2, 1) -- Bacak boyutunu ayarlayabilirsiniz
+sahteBacak.Transparency = 0 -- Bacak görünmez olacak
+sahteBacak.Parent = Player.Character
+
+-- Motor6D oluşturma
+local sahteBacakMotor6D = Instance.new("Motor6D")
+sahteBacakMotor6D.Name = "SahteSağBacakMotor6D"
+sahteBacakMotor6D.Part0 = Player.Character.Torso
+sahteBacakMotor6D.Part1 = sahteBacak
+sahteBacakMotor6D.C0 = CFrame.new(1, -1, 0, 0, 0, 1, 0, 1, -0, -1, 0, 0)
+sahteBacakMotor6D.C1 = CFrame.new(0.5, 1, 0, 0, 0, 1, 0, 1, -0, -1, 0, 0) -- Bacak pozisyonunu ayarlayabilirsiniz
+
+-- Motor6D'yi karaktere ekleme
+sahteBacakMotor6D.Parent = Player.Character.Torso
+
+    print("Clicked")
+end)
+
+Section:NewButton("Fake Left Leg", "ButtonInfo", function()local Players = game:GetService("Players")
+local Player = Players.LocalPlayer
+
+-- Bacak parçalarını bulma
+local solBacak = Player.Character["Left Leg"]
+local sagBacak = Player.Character["Right Leg"]
+
+-- Sahte bacak oluşturma
+local sahteBacak = Instance.new("Part")
+sahteBacak.Name = "Left Leg"
+sahteBacak.Size = Vector3.new(1, 2, 1) -- Bacak boyutunu ayarlayabilirsiniz
+sahteBacak.Transparency = 0 -- Bacak görünmez olacak
+sahteBacak.Parent = Player.Character
+
+-- Motor6D oluşturma
+local sahteBacakMotor6D = Instance.new("Motor6D")
+sahteBacakMotor6D.Name = "SahteSolBacakMotor6D"
+sahteBacakMotor6D.Part0 = Player.Character.Torso
+sahteBacakMotor6D.Part1 = sahteBacak
+sahteBacakMotor6D.C0 = CFrame.new(-1, -1, 0, 0, 0, -1, 0, 1, 0, 1, 0, 0)
+sahteBacakMotor6D.C1 = CFrame.new(-0.5, 1, 0, 0, 0, -1, 0, 1, 0, 1, 0, 0) -- Bacak pozisyonunu ayarlayabilirsiniz
+
+-- Motor6D'yi karaktere ekleme
+sahteBacakMotor6D.Parent = Player.Character.Torso
+
+    print("Clicked")
+end)
+
+local Tab = Window:NewTab("Hand Reach")
+local Section = Tab:NewSection("Hitbox Expander")
+
+Section:NewSlider("Both Hand Reach", "SliderInfo", 50, 0, function(s) -- 500 (MaxValue) | 0 (MinValue)
+    game.Players.LocalPlayer.Character["Right Arm"].Size = Vector3.new(s, s, 1)
+    game.Players.LocalPlayer.Character["Left Arm"].Size = Vector3.new(s, s, 1)
+    game.Players.LocalPlayer.Character["Right Arm"].CanCollide = false
+    game.Players.LocalPlayer.Character["Left Arm"].CanCollide = false
+    game.Players.LocalPlayer.Character["Right Arm"].Massless = true
+    game.Players.LocalPlayer.Character["Left Arm"].Massless = true
+end)
+
+local Section = Tab:NewSection("Arm Transparency")
+
+Section:NewTextBox("Arm Transparency/Right", "TextboxInfo", function(txtr)game.Players.LocalPlayer.Character["Right Arm"].Transparency = txtr
+	print(txt)
+end)
+
+Section:NewTextBox("Arm Transparency/Left", "TextboxInfo", function(txtl)game.Players.LocalPlayer.Character["Left Arm"].Transparency = txtl
+	print(txt)
+end)
+
+local Tab = Window:NewTab("İnfinite Stam")
+local Section = Tab:NewSection("Keybind = C")
+Section:NewButton("Click", "ButtonInfo", function()local defaultSpeed = 16
+local speed = 20
+local animationId = "10327878358" -- Kullanmak istediğiniz animasyonun ID'sini buraya ekleyin
+
+-- Düzenlenmemesi gereken kısımları aşağıda görebilirsiniz
+_G.Speeding = false
+local isSpeeding = false
+local isKeyPressed = false
+
+-- Animasyon nesnesini oluşturun
+local animation = Instance.new("Animation")
+animation.AnimationId = "rbxassetid://" .. animationId
+
+-- Animasyonu oynatabilmek için animasyon kontrolcüsü oluşturun
+local animationController = game.Players.LocalPlayer.Character.Humanoid:LoadAnimation(animation)
+
+game:GetService("UserInputService").InputBegan:Connect(function(inputkey)
+   if inputkey.KeyCode == Enum.KeyCode.C then
+       isKeyPressed = true
+   end
+end)
+
+game:GetService("UserInputService").InputEnded:Connect(function(inputkey)
+   if inputkey.KeyCode == Enum.KeyCode.C then
+       isKeyPressed = false
+   end
+end)
+
+game:GetService("RunService").Heartbeat:Connect(function()
+   if isKeyPressed then
+       if not _G.Speeding then
+           -- Hızı ayarla
+           game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = speed
+           _G.Speeding = true
+
+           -- Animasyonu oynat
+           animationController:Play()
+       end
+   else
+       if _G.Speeding then
+           -- Hızı sıfırla
+           game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = defaultSpeed
+           _G.Speeding = false
+
+           -- Animasyonu durdur
+           animationController:Stop()
+       end
+   end
+end)
+    print("Clicked")
+end)
+
+local Tab = Window:NewTab("Menu")
+local Section = Tab:NewSection("Menu Toggle")
+Section:NewKeybind("Menu Toggle Keybind", "KeybindInfo", Enum.KeyCode.M, function()
+	Library:ToggleUI()
+end)
+
