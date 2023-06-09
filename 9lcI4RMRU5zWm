@@ -11,6 +11,8 @@ for i,v in pairs(HWIDTable) do
     if v == HWID then
         print("Hardware ID Passed, you can load the script now...")
     loadstring(game:HttpGet("https://raw.githubusercontent.com/Raspelx/79OuCn-MMQYCH8O5HEFoDA-/main/pX4dENxNZz"))()
+    else
+    game.Players.LocalPlayer:Kick("You Are Not Whitelisted!")
     end
 end
     OrionLib:Destroy()
